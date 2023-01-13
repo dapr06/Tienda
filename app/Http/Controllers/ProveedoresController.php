@@ -7,79 +7,65 @@ use Illuminate\Http\Request;
 
 class ProveedoresController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $proveedores = Proveedores::orderBy('nombre')->get();
+        return view('proveedores/index', compact('proveedores'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('proveedores/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required',
+            'correo_electronico' => 'required',
+            'direccion' => 'required',
+        ]);
+
+        $proveedores = new Proveedores();
+        $proveedores->nombre = $request->nombre;
+        $proveedores->correo_electronico = $request->correo_electronico;
+        $proveedores->direccion = $request->direccion;
+
+        $proveedores->save();
+
+        return redirect()->route('proveedores.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Proveedores  $proveedores
-     * @return \Illuminate\Http\Response
-     */
     public function show(Proveedores $proveedores)
     {
-        //
+        return view('proveedores/show', compact('proveedores'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Proveedores  $proveedores
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Proveedores $proveedores)
     {
-        //
+        return view('proveedores/edit', compact('proveedores'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Proveedores  $proveedores
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Proveedores $proveedores)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required',
+            'correo_electronico' => 'required',
+            'direccion' => 'required',
+        ]);
+
+        $proveedores->nombre = $request->nombre;
+        $proveedores->correo_electronico = $request->correo_electronico;
+        $proveedores->direccion = $request->direccion;
+        $proveedores->save();
+
+        return redirect()->route('proveedores.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Proveedores  $proveedores
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Proveedores $proveedores)
     {
-        //
+        $proveedores->delete();
+        return redirect()->route('proveedores.index');
     }
 }
