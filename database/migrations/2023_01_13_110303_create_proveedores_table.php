@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre',40);
             $table->string('correo_electronico',40);
-            $table->string('dirección',100);
+            $table->string('direccion',100);
             $table->timestamps();
         });
     }

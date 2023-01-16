@@ -18,7 +18,7 @@
                 <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->id }}</a></td>
                 <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->nombre }}</a></td>
                 <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->correo_electronico }}</a></td>
-                <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->dirección }}</a></td>
+                <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->direccion }}</a></td>
 
                 <td>
                     <form action='{{ route('proveedores.destroy', $proveedor) }}' method='post'>
