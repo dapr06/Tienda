@@ -21,6 +21,7 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'id' => 'required',
             'nombre' => 'required',
             'marca' => 'required',
             'modelo' => 'required',
@@ -29,7 +30,8 @@ class ProductosController extends Controller
             'stock' => 'required',
         ]);
 
-        $producto = new Producto();
+        $producto = new Productos();
+        $producto->id = $request->id;
         $producto->nombre = $request->nombre;
         $producto->marca = $request->marca;
         $producto->modelo = $request->modelo;
