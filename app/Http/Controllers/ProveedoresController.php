@@ -37,17 +37,17 @@ class ProveedoresController extends Controller
         return redirect()->route('proveedores.index');
     }
 
-    public function show(Proveedores $proveedores)
+    public function show(Proveedores $proveedor)
     {
-        return view('proveedores/show', compact('proveedores'));
+        return view('proveedores/show', compact('proveedor'));
     }
 
-    public function edit(Proveedores $proveedores)
+    public function edit(Proveedores $proveedor)
     {
-        return view('proveedores/edit', compact('proveedores'));
+        return view('proveedores/edit', compact('proveedor'));
     }
 
-    public function update(Request $request, Proveedores $proveedores)
+    public function update(Request $request, Proveedores $proveedor)
     {
         $this->validate($request, [
             'nombre' => 'required',
@@ -55,17 +55,16 @@ class ProveedoresController extends Controller
             'direccion' => 'required',
         ]);
 
-        $proveedores->nombre = $request->nombre;
-        $proveedores->correo_electronico = $request->correo_electronico;
-        $proveedores->direccion = $request->direccion;
-        $proveedores->save();
-
+        $proveedor->nombre = $request->nombre;
+        $proveedor->correo_electronico = $request->correo_electronico;
+        $proveedor->direccion = $request->direccion;
+        $proveedor->save();
         return redirect()->route('proveedores.index');
     }
 
-    public function destroy(Proveedores $proveedores)
+    public function destroy(Proveedores $proveedor)
     {
-        $proveedores->delete();
+        $proveedor->delete();
         return redirect()->route('proveedores.index');
     }
 }
