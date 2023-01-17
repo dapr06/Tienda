@@ -70,7 +70,7 @@ class ProductosController extends Controller
         $producto->precio = $request->precio;
         $producto->stock = $request->stock;
         $producto->save();
-        return redirect()->route('categorias.index');
+        return redirect()->route('productos.index');
     }
 
     public function destroy(Productos $producto)
