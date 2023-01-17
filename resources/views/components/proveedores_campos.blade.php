@@ -1,6 +1,3 @@
-<label for='id'>Id</label>
-<input type='text' id='id' name='id' value='{{ $proveedor->id ?? '' }}' />
-<br><br>
 <label for='nombre'>Nombre</label>
 <input type='text' id='nombre' name='nombre' value='{{ $proveedor->nombre ?? '' }}' />
 <br><br>
