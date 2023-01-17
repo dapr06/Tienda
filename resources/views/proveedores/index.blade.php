@@ -2,8 +2,8 @@
     <x-slot:tituloHead>Proveedores</x-slot:tituloHead>
     <x-slot:tituloVisible>Listado de proveedores</x-slot:tituloVisible>
 
-    <table>
-
+    <h2>Listado de proveedores</h2>
+    <table border="1">
         <tr>
             <th>Id</th>
             <th>Nombre</th>
@@ -35,6 +35,6 @@
 
     <button><a href='{{ route('proveedores.create') }}'>Crear</a></button><br><br>
 
-    <a href='{{ route('proveedores.index') }}'>Listado de proveedores</a>
+    <a href='{{ route('productos.index') }}'>Listado de productos.</a>
 
 </x-base>
