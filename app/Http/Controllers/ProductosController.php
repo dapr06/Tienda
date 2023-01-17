@@ -48,9 +48,9 @@ class ProductosController extends Controller
         return view('productos/show', compact('producto'));
     }
 
-    public function edit(Productos $productos)
+    public function edit(Productos $producto)
     {
-        return view('productos/edit', compact('productos'));
+        return view('productos/edit', compact('producto'));
     }
 
     public function update(Request $request, Productos $producto)
