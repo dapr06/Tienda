@@ -57,6 +57,7 @@ class ProveedoresController extends Controller
         $proveedor->correo_electronico = $request->correo_electronico;
         $proveedor->direccion = $request->direccion;
         $proveedor->save();
+
         return redirect()->route('proveedores.index');
     }
 
