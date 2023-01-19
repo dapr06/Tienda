@@ -2,6 +2,8 @@
 
     <x-slot:tituloHead>Productos</x-slot:tituloHead>
     <x-slot:tituloVisible>Listado de productos</x-slot:tituloVisible>
+    <link rel='stylesheet' href='resources/css/estilos.css'>
+
 
     <h2>Listado de productos</h2>
     <table border="1">
