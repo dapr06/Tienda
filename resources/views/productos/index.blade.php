@@ -14,7 +14,7 @@
             <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>
-            <!--<th>Id_Proveedor</th>-->
+            <th>Proveedor</th>
             <th>Eliminar</th>
         </tr>
 
@@ -27,13 +27,14 @@
                 <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->descripcion }}</a></td>
                 <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->precio }}</a></td>
                 <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->stock }}</a></td>
+                <td><a href='{{ route('proveedores.show', $producto->proveedores) }}'>{{ $producto->proveedores->nombre }}</a></td>
 
                 <td>
                     <form action='{{ route('productos.destroy', $producto) }}' method='post'>
                         @method('delete')
                         @csrf
 
-                        <button type='submit'>(X)</button>
+                        <button type='submit' >(X)</button>
                     </form>
                 </td>
             </tr>
