@@ -3,7 +3,7 @@
     <x-slot:tituloHead>Crear proveedor</x-slot:tituloHead>
 
 
-    <form action='{{ route('proveedores.store') }}' method='post'>
+    <form action='{{ route('proveedor.store') }}' method='post'>
         @method('post')
         @csrf
 
@@ -12,7 +12,7 @@
         <input class='button' type='submit' name='crear' value='Crear proveedor' />
     </form><br/>
 
-    <a href='{{ route('proveedores.index') }}'>Volver al listado</a>
+    <a href='{{ route('proveedor.index') }}'>Volver al listado</a>
 
 </x-base>
 

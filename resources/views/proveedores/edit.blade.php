@@ -4,7 +4,7 @@
 <x-slot:titulo>Edita proveedor</x-slot:titulo>
 <H1> Edita proveedor {{$proveedor->nombre}}</H1>
 <br>
-<form action = '{{route('proveedores.update',$proveedor)}}' method='post'>
+<form action = '{{route('proveedor.update',$proveedor)}}' method='post'>
     @method('put')
 
     <label for='nombre'>Nombre </label>
@@ -24,5 +24,5 @@
     <button type='submit'>Actualizar</button>
 </form>
 
-<a href='{{ route('proveedores.index') }}'>Ir al listado de proveedores</a>
+<a href='{{ route('proveedor.index') }}'>Ir al listado de proveedores</a>
 </x-base>

@@ -15,13 +15,13 @@
 
         @foreach ($proveedores as $proveedor)
             <tr>
-                <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->id }}</a></td>
-                <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->nombre }}</a></td>
-                <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->correo_electronico }}</a></td>
-                <td><a href='{{ route('proveedores.show', $proveedor) }}'>{{ $proveedor->direccion }}</a></td>
+                <td><a href='{{ route('proveedor.show', $proveedor) }}'>{{ $proveedor->id }}</a></td>
+                <td><a href='{{ route('proveedor.show', $proveedor) }}'>{{ $proveedor->nombre }}</a></td>
+                <td><a href='{{ route('proveedor.show', $proveedor) }}'>{{ $proveedor->correo_electronico }}</a></td>
+                <td><a href='{{ route('proveedor.show', $proveedor) }}'>{{ $proveedor->direccion }}</a></td>
 
                 <td>
-                    <form action='{{ route('proveedores.destroy', $proveedor) }}' method='post'>
+                    <form action='{{ route('proveedor.destroy', $proveedor) }}' method='post'>
                         @method('delete')
                         @csrf
 
@@ -33,8 +33,8 @@
 
     </table><br><br>
 
-    <button><a href='{{ route('proveedores.create') }}'>Crear</a></button><br><br>
+    <button><a href='{{ route('proveedor.create') }}'>Crear</a></button><br><br>
 
-    <a href='{{ route('productos.index') }}'>Listado de productos.</a>
+    <a href='{{ route('producto.index') }}'>Listado de productos.</a>
 
 </x-base>

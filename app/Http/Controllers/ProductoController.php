@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Productos;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
-class ProductosController extends Controller
+class ProductoController extends Controller
 {
     public function index()
     {
-        $productos = Productos::orderBy('nombre')->get();
+        $productos = Producto::orderBy('nombre')->get();
         return view('productos/index', compact('productos'));
     }
 
@@ -30,7 +30,7 @@ class ProductosController extends Controller
             'proveedores_id' => 'required',
         ]);
 
-        $producto = new Productos();
+        $producto = new Producto();
         $producto->nombre = $request->nombre;
         $producto->marca = $request->marca;
         $producto->modelo = $request->modelo;
@@ -39,20 +39,20 @@ class ProductosController extends Controller
         $producto->stock = $request->stock;
         $producto->proveedores_id = $request->proveedores_id;
         $producto->save();
-        return redirect()->route('productos.index');
+        return redirect()->route('producto.index');
     }
 
-    public function show(Productos $producto)
+    public function show(Producto $producto)
     {
         return view('productos/show', compact('producto'));
     }
 
-    public function edit(Productos $producto)
+    public function edit(Producto $producto)
     {
         return view('productos/edit', compact('producto'));
     }
 
-    public function update(Request $request, Productos $producto)
+    public function update(Request $request, Producto $producto)
     {
         $this->validate($request, [
             'nombre' => 'required',
@@ -72,12 +72,12 @@ class ProductosController extends Controller
         $producto->stock = $request->stock;
         $producto->proveedores_id = $request->proveedores_id;
         $producto->save();
-        return redirect()->route('productos.index');
+        return redirect()->route('producto.index');
     }
 
-    public function destroy(Productos $producto)
+    public function destroy(Producto $producto)
     {
         $producto->delete();
-        return redirect()->route('productos.index');
+        return redirect()->route('producto.index');
     }
 }

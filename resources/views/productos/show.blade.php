@@ -11,11 +11,11 @@
     <p>{{$producto->stock}}</p>
 
 
-    <a href='{{ route('productos.edit', $producto) }}'>Editar producto</a>
+    <a href='{{ route('producto.edit', $producto) }}'>Editar producto</a>
 
     <br/><br/>
 
-    <form id='{{ $producto->id }}' action='{{ route('productos.destroy', $producto) }}'
+    <form id='{{ $producto->id }}' action='{{ route('producto.destroy', $producto) }}'
           method='post'>
         @method('delete')
 
@@ -24,7 +24,7 @@
 
     <br>
 
-    <a href='{{ route('productos.index') }}'>Volver al listado de productos.</a>
+    <a href='{{ route('producto.index') }}'>Volver al listado de productos.</a>
 
 </x-base>
 

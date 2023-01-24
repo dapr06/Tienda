@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use \App\Models\Proveedores;
+use \App\Models\Proveedor;
 
 return new class extends Migration
 {
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('descripcion',100);
             $table->integer('precio');
             $table->integer('stock');
-            $table->foreignIdFor(Proveedores::class)
+            $table->foreignIdFor(Proveedor::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

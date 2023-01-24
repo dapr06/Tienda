@@ -17,5 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('productos', \App\Http\Controllers\ProductosController::class);
-Route::resource('proveedores', \App\Http\Controllers\ProveedoresController::class);
+Route::resource('producto', \App\Http\Controllers\ProductoController::class);
+Route::resource('proveedor', \App\Http\Controllers\ProveedorController::class);

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Proveedores;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
-class ProveedoresController extends Controller
+class ProveedorController extends Controller
 {
 
     public function index()
     {
-        $proveedores = Proveedores::orderBy('nombre')->get();
+        $proveedores = Proveedor::orderBy('nombre')->get();
         return view('proveedores/index', compact('proveedores'));
     }
 
@@ -27,25 +27,25 @@ class ProveedoresController extends Controller
             'direccion' => 'required',
         ]);
 
-        $proveedores = new Proveedores();
+        $proveedores = new Proveedor();
         $proveedores->nombre = $request->nombre;
         $proveedores->correo_electronico = $request->correo_electronico;
         $proveedores->direccion = $request->direccion;
         $proveedores->save();
-        return redirect()->route('proveedores.index');
+        return redirect()->route('proveedor.index');
     }
 
-    public function show(Proveedores $proveedor)
+    public function show(Proveedor $proveedor)
     {
         return view('proveedores/show', compact('proveedor'));
     }
 
-    public function edit(Proveedores $proveedor)
+    public function edit(Proveedor $proveedor)
     {
         return view('proveedores/edit', compact('proveedor'));
     }
 
-    public function update(Request $request, Proveedores $proveedor)
+    public function update(Request $request, Proveedor $proveedor)
     {
         $this->validate($request, [
             'nombre' => 'required',
@@ -58,12 +58,12 @@ class ProveedoresController extends Controller
         $proveedor->direccion = $request->direccion;
         $proveedor->save();
 
-        return redirect()->route('proveedores.index');
+        return redirect()->route('proveedor.index');
     }
 
-    public function destroy(Proveedores $proveedor)
+    public function destroy(Proveedor $proveedor)
     {
         $proveedor->delete();
-        return redirect()->route('proveedores.index');
+        return redirect()->route('proveedor.index');
     }
 }
