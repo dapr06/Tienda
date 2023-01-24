@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +19,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('producto', \App\Http\Controllers\ProductoController::class);
-Route::resource('proveedor', \App\Http\Controllers\ProveedorController::class);
+Route::resource('productos', ProductoController::class);
+Route::resource('proveedores', ProveedorController::class);

@@ -27,7 +27,7 @@
                 <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->descripcion }}</a></td>
                 <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->precio }}</a></td>
                 <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->stock }}</a></td>
-                <td><a href='{{ route('proveedor.show', $producto->proveedores) }}'>{{ $producto->proveedores->nombre }}</a></td>
+                <td><a href='{{ route('proveedor.show', $producto->proveedor) }}'>{{ $producto->proveedor->nombre }}</a></td>
 
                 <td>
                     <form action='{{ route('producto.destroy', $producto) }}' method='post'>
@@ -38,7 +38,7 @@
                     </form>
                 </td>
             </tr>
-            
+
         @endforeach
 
     </table><br><br>

@@ -9,7 +9,7 @@ class Producto extends Model
 {
     use HasFactory;
 
-    public function proveedores(){
+    public function proveedor(){
         return $this->belongsTo(Proveedor::class);
     }
 }
