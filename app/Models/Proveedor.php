@@ -9,7 +9,7 @@ class Proveedor extends Model
 {
     use HasFactory;
 
-    public function productos(){
+    public function producto(){
         return $this->hasMany(Producto::class);
 
     }

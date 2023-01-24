@@ -2,9 +2,9 @@
 <div
     style='background-color: lightgreen'
 >
-    <a href='{{route('producto.index')}}'><button>Productos</button></a>
-    <a href='{{route('producto.create')}}'><button>Crear productos</button></a>
-    <a href='{{route('proveedor.index')}}'><button>Proveedores</button></a>
-    <a href='{{route('proveedor.create')}}'><button>Crear proveedores</button></a>
+    <a href='{{route('productos.index')}}'><button>Productos</button></a>
+    <a href='{{route('productos.create')}}'><button>Crear productos</button></a>
+    <a href='{{route('proveedores.index')}}'><button>Proveedores</button></a>
+    <a href='{{route('proveedores.create')}}'><button>Crear proveedores</button></a>
 </div>
 

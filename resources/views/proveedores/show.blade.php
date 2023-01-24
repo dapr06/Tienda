@@ -8,11 +8,11 @@
     <p>{{$proveedor->direccion}}</p>
 
 
-    <a href='{{ route('proveedor.edit', $proveedor) }}'>Editar producto</a>
+    <a href='{{ route('proveedores.edit', $proveedor) }}'>Editar producto</a>
 
     <br/><br/>
 
-    <form id='{{ $proveedor->id }}' action='{{ route('proveedor.destroy', $proveedor) }}'
+    <form id='{{ $proveedor->id }}' action='{{ route('proveedores.destroy', $proveedor) }}'
     method='post'>
     @method('delete')
 
@@ -21,6 +21,6 @@
 
     <br>
 
-    <a href='{{ route('proveedor.index') }}'>Volver al listado de productos.</a>
+    <a href='{{ route('proveedores.index') }}'>Volver al listado de productos.</a>
 
 </x-base>

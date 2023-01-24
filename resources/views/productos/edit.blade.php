@@ -4,7 +4,7 @@
 <x-slot:titulo>Edita producto</x-slot:titulo>
 <H1> Edita producto {{$producto->nombre}}</H1>
 <br>
-<form action = '{{route('producto.update',$producto)}}' method='post'>
+<form action = '{{route('productos.update',$producto)}}' method='post'>
     @method('put')
 
     <label for='nombre'>Nombre </label>
@@ -35,5 +35,5 @@
     <button type='submit'>Actualizar</button>
 </form>
 
-<a href='{{ route('producto.index') }}'>Ir al listado de categorias</a>
+<a href='{{ route('productos.index') }}'>Ir al listado de categorias</a>
 </x-base>

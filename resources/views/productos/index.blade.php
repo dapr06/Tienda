@@ -20,17 +20,17 @@
 
         @foreach ($productos as $producto)
             <tr>
-                <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->id }}</a></td>
-                <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->nombre }}</a></td>
-                <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->marca }}</a></td>
-                <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->modelo }}</a></td>
-                <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->descripcion }}</a></td>
-                <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->precio }}</a></td>
-                <td><a href='{{ route('producto.show', $producto) }}'>{{ $producto->stock }}</a></td>
-                <td><a href='{{ route('proveedor.show', $producto->proveedor) }}'>{{ $producto->proveedor->nombre }}</a></td>
+                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->id }}</a></td>
+                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->nombre }}</a></td>
+                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->marca }}</a></td>
+                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->modelo }}</a></td>
+                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->descripcion }}</a></td>
+                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->precio }}</a></td>
+                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->stock }}</a></td>
+                <td><a href='{{ route('proveedores.show', $producto->proveedor) }}'>{{ $producto->proveedor->nombre }}</a></td>
 
                 <td>
-                    <form action='{{ route('producto.destroy', $producto) }}' method='post'>
+                    <form action='{{ route('productos.destroy', $producto) }}' method='post'>
                         @method('delete')
                         @csrf
 
@@ -43,8 +43,8 @@
 
     </table><br><br>
 
-    <button><a href='{{ route('producto.create') }}'>Crear</a></button><br><br>
+    <button><a href='{{ route('productos.create') }}'>Crear</a></button><br><br>
 
-    <a href='{{ route('proveedor.index') }}'>Listado de proveedores.</a>
+    <a href='{{ route('proveedores.index') }}'>Listado de proveedores.</a>
 
 </x-base>

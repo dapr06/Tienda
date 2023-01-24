@@ -32,7 +32,7 @@ class ProveedorController extends Controller
         $proveedores->correo_electronico = $request->correo_electronico;
         $proveedores->direccion = $request->direccion;
         $proveedores->save();
-        return redirect()->route('proveedor.index');
+        return redirect()->route('proveedores.index');
     }
 
     public function show(Proveedor $proveedor)
@@ -58,12 +58,12 @@ class ProveedorController extends Controller
         $proveedor->direccion = $request->direccion;
         $proveedor->save();
 
-        return redirect()->route('proveedor.index');
+        return redirect()->route('proveedores.index');
     }
 
     public function destroy(Proveedor $proveedor)
     {
         $proveedor->delete();
-        return redirect()->route('proveedor.index');
+        return redirect()->route('proveedores.index');
     }
 }

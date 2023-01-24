@@ -27,7 +27,7 @@ class ProductoController extends Controller
             'descripcion' => 'required',
             'precio' => 'required',
             'stock' => 'required',
-            'proveedores_id' => 'required',
+            'proveedor_id' => 'required',
         ]);
 
         $producto = new Producto();
@@ -37,9 +37,9 @@ class ProductoController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
         $producto->stock = $request->stock;
-        $producto->proveedores_id = $request->proveedores_id;
+        $producto->proveedor_id = $request->proveedor_id;
         $producto->save();
-        return redirect()->route('producto.index');
+        return redirect()->route('productos.index');
     }
 
     public function show(Producto $producto)
@@ -61,7 +61,7 @@ class ProductoController extends Controller
             'descripcion' => 'required',
             'precio' => 'required',
             'stock' => 'required',
-            'proveedores_id' => 'required',
+            'proveedor_id' => 'required',
         ]);
 
         $producto->nombre = $request->nombre;
@@ -70,14 +70,14 @@ class ProductoController extends Controller
         $producto->descripcion = $request->descripcion;
         $producto->precio = $request->precio;
         $producto->stock = $request->stock;
-        $producto->proveedores_id = $request->proveedores_id;
+        $producto->proveedor_id = $request->proveedor_id;
         $producto->save();
-        return redirect()->route('producto.index');
+        return redirect()->route('productos.index');
     }
 
     public function destroy(Producto $producto)
     {
         $producto->delete();
-        return redirect()->route('producto.index');
+        return redirect()->route('productos.index');
     }
 }

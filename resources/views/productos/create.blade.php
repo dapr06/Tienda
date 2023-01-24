@@ -2,8 +2,8 @@
 
     <x-slot:tituloHead>Crear producto</x-slot:tituloHead>
 
-
-    <form action='{{ route('producto.store') }}' method='post'>
+   
+    <form action='{{ route('productos.store') }}' method='post'>
         @method('post')
         @csrf
 
@@ -12,7 +12,7 @@
         <input class='button' type='submit' name='crear' value='Crear producto' />
     </form><br/>
 
-    <a href='{{ route('producto.index') }}'>Volver al listado</a>
+    <a href='{{ route('productos.index') }}'>Volver al listado</a>
 
 </x-base>
 
