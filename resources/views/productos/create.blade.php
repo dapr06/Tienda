@@ -9,7 +9,7 @@
 
         <x-productos_campos/>
 
-        <input class='button' type='submit' name='crear' value='Crear productos' />
+        <input class='button' type='submit' name='crear' value='Crear producto' />
     </form><br/>
 
     <a href='{{ route('productos.index') }}'>Volver al listado</a>

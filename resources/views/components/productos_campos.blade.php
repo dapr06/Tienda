@@ -16,3 +16,6 @@
 <label for='stock'>stock</label>
 <input type='text' id='stock' name='stock' value='{{ $producto->stock ?? '' }}' />
 <br><br>
+<label for='proveedores_id'>Proveedor</label>
+<input type='text' id='proveedores_id' name='proveedores_id' value='{{ $producto->proveedor_id ?? '' }}' />
+<br><br>
