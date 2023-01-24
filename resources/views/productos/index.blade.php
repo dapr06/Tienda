@@ -38,6 +38,7 @@
                     </form>
                 </td>
             </tr>
+            
         @endforeach
 
     </table><br><br>
