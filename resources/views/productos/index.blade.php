@@ -1,5 +1,4 @@
 <x-base>
-
     <x-slot:tituloHead>Productos</x-slot:tituloHead>
     <x-slot:tituloVisible>Listado de productos</x-slot:tituloVisible>
     <link rel='stylesheet' href='resources/css/estilos.css'>
