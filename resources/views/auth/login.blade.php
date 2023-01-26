@@ -38,10 +38,13 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                @endif
             <x-primary-button class="ml-3">
                 {{ __('Log in') }}
             </x-primary-button>
+
         </div>
     </form>
 </x-guest-layout>

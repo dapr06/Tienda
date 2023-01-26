@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Producto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/index', function () {
+    $productos = Producto::orderBy('nombre')->get();
+    return view('productos/index', compact('productos'));
+})->middleware(['auth', 'verified'])->name('productos/index');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
