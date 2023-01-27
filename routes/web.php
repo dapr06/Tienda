@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/index', function () {
+Route::get('/productos', function () {
     $productos = Producto::orderBy('nombre')->get();
     return view('productos/index', compact('productos'));
 })->middleware(['auth', 'verified'])->name('productos/index');
