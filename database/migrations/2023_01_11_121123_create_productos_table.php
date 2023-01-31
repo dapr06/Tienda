@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use \App\Models\Proveedor;
+use \App\Models\linea_pedido;
 
 return new class extends Migration
 {
@@ -22,10 +23,16 @@ return new class extends Migration
             $table->string('descripcion',100);
             $table->integer('precio');
             $table->integer('stock');
+            // proveedor puede tener muchos productos
             $table->foreignIdFor(Proveedor::class)
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            // productos N a N con linea_pedido
+            /*$table->foreignIdFor(linea_pedido::class)
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');*/
             $table->timestamps();
         });
     }
