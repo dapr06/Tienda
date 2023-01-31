@@ -4,4 +4,4 @@
 </svg>
 --}}
 
-<img src="logotienda.png">
+<img src="logoTienda.png">
