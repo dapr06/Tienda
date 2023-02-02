@@ -17,8 +17,14 @@ class LineaPedidoController extends Controller
      */
     public function index()
     {
-        //
+
+
+
         $linea_pedido = linea_pedido::all();
+
+
+
+
         return view('carrito/index', compact('linea_pedido'));
     }
 
@@ -56,13 +62,27 @@ class LineaPedidoController extends Controller
 
 
         // Agrega una nueva linea_pedido para el producto
-        $linea_pedido = new linea_pedido();
-        $linea_pedido->producto_id = $product_id;
-        $linea_pedido->cantidad = $cant; // por defecto
-        $linea_pedido->pedido_id = $pedido->id;
-        $linea_pedido->save();
+       // $linea_pedido = new linea_pedido();
+        //$linea_pedido->producto_id = $product_id;
+        //$linea_pedido->cantidad = $cant; // por defecto
+        //$linea_pedido->pedido_id = $pedido->id;
+        //$linea_pedido->save();
         // Redirige al usuario de vuelta a la página anterior
         //return back();
+        $linea_pedido = linea_pedido::where('pedido_id',$pedido->id)
+                ->where ('producto_id',$product_id)
+                ->first();
+
+        if ($linea_pedido) {
+    $linea_pedido->cantidad += $cant;
+    $linea_pedido->save();
+} else {
+    $linea_pedido = new linea_pedido();
+    $linea_pedido->producto_id = $product_id;
+    $linea_pedido->cantidad = $cant;
+    $linea_pedido->pedido_id = $pedido->id;
+    $linea_pedido->save();
+}
 
         return redirect()->route('lineas_pedidos.index', compact('linea_pedido'));
     }

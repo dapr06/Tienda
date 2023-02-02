@@ -7,5 +7,7 @@
     <a href='{{route('proveedores.index')}}'><button>Proveedores</button></a>
     <a href='{{route('proveedores.create')}}'><button>Crear proveedores</button></a>
     <a href='{{ route('lineas_pedidos.index') }}'><button>Carrito</button></a>
+
+    <x-user/>
 </div>
 

@@ -8,15 +8,19 @@
             <th>Pedido</th>
         </tr>
 
-        @foreach ($linea_pedido as $linea)
-            <tr>
-                <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->id }}</a></td>
-                <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->producto_id }}</a></td>
-                <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->cantidad }}</a></td>
-                <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->pedido_id }}</a></td>
-            </tr>
 
-        @endforeach
+    @foreach ($linea_pedido as $linea)
+
+        <tr>
+            <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->id }}</a></td>
+            <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->producto_id }}</a></td>
+            <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->cantidad }}</a></td>
+            <td><a href='{{ route('lineas_pedidos.show', $linea) }}'>{{ $linea->pedido_id }}</a></td>
+        </tr>
+
+    @endforeach
+
+
     </table>
 </div>
 <br><br>
