@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>Detalle de linea de pedidos</h2>
+    <h2>Carrito</h2>
     <table border="1">
         <tr>
             <th>Id</th>
