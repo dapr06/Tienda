@@ -8,6 +8,7 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class LineaPedidoController extends Controller
 {
     /**
@@ -103,10 +104,13 @@ class LineaPedidoController extends Controller
      * @param  \App\Models\linea_pedido  $linea_pedido
      * @return \Illuminate\Http\Response
      */
-    public function edit(linea_pedido $linea_pedido)
+    public function edit($id)
     {
-        //
+        // editar cantidad de producto
+        $linea_pedido = linea_pedido::findOrFail($id);
+        return view('carrito/edit', compact('linea_pedido'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -115,10 +119,18 @@ class LineaPedidoController extends Controller
      * @param  \App\Models\linea_pedido  $linea_pedido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, linea_pedido $linea_pedido)
+
+    public function update(Request $request, $id)
     {
-        //
+        // editar la cantidad del producto en el carrito
+        $linea_pedido = linea_pedido::findOrFail($id);
+        $linea_pedido->cantidad = $request->input('cantidad');
+        $linea_pedido->save();
+
+        return redirect()->route('lineas_pedidos.index');
+
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -126,8 +138,38 @@ class LineaPedidoController extends Controller
      * @param  \App\Models\linea_pedido  $linea_pedido
      * @return \Illuminate\Http\Response
      */
-    public function destroy(linea_pedido $linea_pedido)
+    public function destroy($id)
     {
-        //
+        // Este código elimina una linea_pedido y redirige al usuario a la
+        // página de índice de lineas_pedidos con un mensaje de éxito.
+        $linea_pedido = linea_pedido::findOrFail($id);
+        // Almacena la información sobre la línea de pedido eliminada en una
+        // variable de sesión
+        session(['deletedLineaPedido' => $linea_pedido]);
+        // Delete the linea_pedido
+        $linea_pedido->delete();
+
+
+
+        return redirect()->route('lineas_pedidos.index')
+            ->with('eliminada','Linea pedido eliminada correctamente');
+
     }
+    // La nueva acción en el controlador que recupere la línea de pedido
+    // eliminada de la variable de sesión y la guarde de nuevo en la base de
+    // datos
+    public function recover(Request $request)
+    {
+        // Recupera la línea de pedido eliminada de la variable de sesión
+        $linea_pedido = session('deletedLineaPedido');
+
+        // Aquí debes guardar de nuevo la línea de pedido en la base de datos
+
+        $linea_pedido->save();
+
+        // Redirige al usuario a la página de índice de lineas_pedidos con un mensaje de éxito
+        return redirect()->route('lineas_pedidos.index')
+            ->with('eliminada', 'Línea de pedido recuperada correctamente');
+    }
+
 }
