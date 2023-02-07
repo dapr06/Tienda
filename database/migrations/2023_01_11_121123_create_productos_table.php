@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use \App\Models\Proveedor;
-use \App\Models\linea_pedido;
+use \App\Models\lineaPedidos;
 
 return new class extends Migration
 {

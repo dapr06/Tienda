@@ -16,7 +16,7 @@ class Pedido extends Model
     // un pedido puede tener varias linea_pedido
     public function linea_pedido()
     {
-        return $this->hasMany(linea_pedido::class);
+        return $this->hasMany(lineaPedidos::class);
     }
     protected $fillable = [
         'user_id',

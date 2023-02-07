@@ -11,16 +11,16 @@
         </tr>
 
 
-    @foreach ($linea_pedido as $linea)
+    @foreach ($lineaPedido as $linea)
 
         <tr>
             <td><a>{{ $linea->id }}</a></td>
             <td><a>{{ $linea->producto_id }}</a></td>
             <td><a>{{ $linea->cantidad }}</a></td>
             <td><a>{{ $linea->pedido_id }}</a></td>
-            <td><a href='{{ route('lineas_pedidos.edit', $linea->id) }}'><img src="edit.png" width="20" height="20"></a></td>
+            <td><a href='{{ route('lineaPedido.edit', $linea->id) }}'><img src="edit.png" width="20" height="20"></a></td>
             <td>
-                <form action="{{ route('lineas_pedidos.destroy', $linea->id) }}" method="POST">
+                <form action="{{ route('lineaPedido.destroy', $linea->id) }}" method="POST">
                     @csrf
                     @method('delete')
                     <input type="image" src="delete.png" width="20" height="20">
@@ -36,7 +36,7 @@
                 <!--es una expresión de Blade en Laravel que permite mostrar un
                 mensaje en la vista que proviene de la sesión.-->
                 {{ session('eliminada') }}
-                <form action="{{ route('lineas_pedidos.recover') }}" method="GET">
+                <form action="{{ route('lineaPedidos.recover') }}" method="GET">
                     @csrf
                     <input type="submit" value="Deshacer">
                 </form>
@@ -47,7 +47,7 @@
 </div>
 <br><br>
 <div>
-    <button><a href='{{ route('lineas_pedidos.create') }}'>Agregar producto</a></button>
+    <button><a href='{{ route('lineaPedido.create') }}'>Agregar producto</a></button>
     <a href='{{route('productos.index')}}'><button>Productos</button></a>
 </div>
 

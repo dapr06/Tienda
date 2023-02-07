@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\linea_pedido;
+use App\Models\lineaPedidos;
 use App\Models\Pedido;
 use App\Models\Producto;
 use Illuminate\Http\Request;
@@ -21,12 +21,12 @@ class LineaPedidoController extends Controller
 
 
 
-        $linea_pedido = linea_pedido::all();
+        $lineaPedido = lineaPedidos::all();
 
 
 
 
-        return view('carrito/index', compact('linea_pedido'));
+        return view('carrito/index', compact('lineaPedido'));
     }
 
     /**
@@ -62,53 +62,53 @@ class LineaPedidoController extends Controller
             ]);
 
 
-        // Agrega una nueva linea_pedido para el producto
-       // $linea_pedido = new linea_pedido();
-        //$linea_pedido->producto_id = $product_id;
-        //$linea_pedido->cantidad = $cant; // por defecto
-        //$linea_pedido->pedido_id = $pedido->id;
-        //$linea_pedido->save();
+        // Agrega una nueva lineaPedido para el producto
+       // $lineaPedido = new lineaPedido();
+        //$lineaPedido->producto_id = $product_id;
+        //$lineaPedido->cantidad = $cant; // por defecto
+        //$lineaPedido->pedido_id = $pedido->id;
+        //$lineaPedido->save();
         // Redirige al usuario de vuelta a la página anterior
         //return back();
-        $linea_pedido = linea_pedido::where('pedido_id',$pedido->id)
+        $lineaPedido = lineaPedidos::where('pedido_id',$pedido->id)
                 ->where ('producto_id',$product_id)
                 ->first();
 
-        if ($linea_pedido) {
-    $linea_pedido->cantidad += $cant;
-    $linea_pedido->save();
+        if ($lineaPedido) {
+    $lineaPedido->cantidad += $cant;
+    $lineaPedido->save();
 } else {
-    $linea_pedido = new linea_pedido();
-    $linea_pedido->producto_id = $product_id;
-    $linea_pedido->cantidad = $cant;
-    $linea_pedido->pedido_id = $pedido->id;
-    $linea_pedido->save();
+    $lineaPedido = new lineaPedidos();
+    $lineaPedido->producto_id = $product_id;
+    $lineaPedido->cantidad = $cant;
+    $lineaPedido->pedido_id = $pedido->id;
+    $lineaPedido->save();
 }
 
-        return redirect()->route('lineas_pedidos.index', compact('linea_pedido'));
+        return redirect()->route('lineaPedido.index', compact('lineaPedido'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\linea_pedido  $linea_pedido
+     * @param  \App\Models\lineaPedidos  $lineaPedido
      * @return \Illuminate\Http\Response
      */
-    public function show(linea_pedido $linea_pedido)
+    public function show(lineaPedidos $lineaPedido)
     {
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\linea_pedido  $linea_pedido
+     * @param  \App\Models\lineaPedidos  $lineaPedido
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         // editar cantidad de producto
-        $linea_pedido = linea_pedido::findOrFail($id);
-        return view('carrito/edit', compact('linea_pedido'));
+        $lineaPedido = lineaPedidos::findOrFail($id);
+        return view('carrito/edit', compact('lineaPedido'));
     }
 
 
@@ -116,18 +116,18 @@ class LineaPedidoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\linea_pedido  $linea_pedido
+     * @param  \App\Models\lineaPedidos  $linea_pedido
      * @return \Illuminate\Http\Response
      */
 
     public function update(Request $request, $id)
     {
         // editar la cantidad del producto en el carrito
-        $linea_pedido = linea_pedido::findOrFail($id);
-        $linea_pedido->cantidad = $request->input('cantidad');
-        $linea_pedido->save();
+        $lineaPedido = lineaPedidos::findOrFail($id);
+        $lineaPedido->cantidad = $request->input('cantidad');
+        $lineaPedido->save();
 
-        return redirect()->route('lineas_pedidos.index');
+        return redirect()->route('lineaPedido.index');
 
     }
 
@@ -135,23 +135,23 @@ class LineaPedidoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\linea_pedido  $linea_pedido
+     * @param  \App\Models\lineaPedidos  $linea_pedido
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         // Este código elimina una linea_pedido y redirige al usuario a la
         // página de índice de lineas_pedidos con un mensaje de éxito.
-        $linea_pedido = linea_pedido::findOrFail($id);
+        $lineaPedido = lineaPedidos::findOrFail($id);
         // Almacena la información sobre la línea de pedido eliminada en una
         // variable de sesión
-        session(['deletedLineaPedido' => $linea_pedido]);
+        session(['deletedLineaPedido' => $lineaPedido]);
         // Delete the linea_pedido
-        $linea_pedido->delete();
+        $lineaPedido->delete();
 
 
 
-        return redirect()->route('lineas_pedidos.index')
+        return redirect()->route('lineaPedido.index')
             ->with('eliminada','Linea pedido eliminada correctamente');
 
     }
@@ -161,14 +161,14 @@ class LineaPedidoController extends Controller
     public function recover(Request $request)
     {
         // Recupera la línea de pedido eliminada de la variable de sesión
-        $linea_pedido = session('deletedLineaPedido');
+        $lineaPedido = session('deletedLineaPedido');
 
         // Aquí debes guardar de nuevo la línea de pedido en la base de datos
 
-        $linea_pedido->save();
+        $lineaPedido->save();
 
         // Redirige al usuario a la página de índice de lineas_pedidos con un mensaje de éxito
-        return redirect()->route('lineas_pedidos.index')
+        return redirect()->route('lineaPedido.index')
             ->with('eliminada', 'Línea de pedido recuperada correctamente');
     }
 

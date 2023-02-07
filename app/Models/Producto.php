@@ -13,8 +13,8 @@ class Producto extends Model
         return $this->belongsTo(Proveedor::class);
     }
     // muchos productos a muchos linea_pedido
-    public function linea_pedido()
+    public function lineaPedido()
     {
-        return $this->belongsToMany(linea_pedido::class);
+        return $this->belongsToMany(lineaPedidos::class);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\linea_pedido;
+use App\Models\lineaPedidos;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
 
