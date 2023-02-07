@@ -9,4 +9,4 @@
     <button type="submit" class="btn btn-primary">Actualizar</button>
 </form>
 
-<a href='{{ route('lineaPedido.index') }}'>Volver al carriro</a>
+<a href='{{ route('lineaPedido.index') }}'>Volver al carriro</a>ib
