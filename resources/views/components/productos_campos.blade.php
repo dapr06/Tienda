@@ -1,3 +1,5 @@
+
+
 <label for='nombre'>Nombre</label>
 <input type='text' id='nombre' name='nombre' value='{{ $producto->nombre ?? '' }}' />
 <br><br>
@@ -17,5 +19,11 @@
 <input type='text' id='stock' name='stock' value='{{ $producto->stock ?? '' }}' />
 <br><br>
 <label for='proveedor_id'>Proveedor</label>
-<input type='text' id='proveedor_id' name='proveedor_id' value='{{ $producto->proveedor_id ?? '' }}' />
-<br><br>
+<select id='proveedor_id' name='proveedor_id'>
+    <optgroup label='Proveedor'>
+        @foreach($proveedores as $proveedor)
+            <option @selected($proveedor-> id == ($producto->proveedor_id ?? '')) value='{{ $proveedor->id}}'> {{ $proveedor->nombre }}</option>
+        @endforeach
+    </optgroup><br><br>
+</select>
+

@@ -32,6 +32,16 @@
     <input id='stock' name='stock' type='text' value='{{ $producto->stock }}'>
     <br><br>
 
+    <label for='proveedor_id'>Proveedor</label>
+    <select id='proveedor_id' name='proveedor_id'>
+        <optgroup label='Proveedor'>
+            @foreach($proveedores as $proveedor)
+                <option @selected($proveedor-> id == ($producto->proveedor_id ?? '')) value='{{ $proveedor->id}}'> {{ $proveedor->nombre }}</option>
+            @endforeach
+        </optgroup><br><br>
+    </select>
+
+    <br><br>
     <button type='submit'>Actualizar</button>
 </form>
 

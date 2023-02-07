@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Producto;
+use App\Models\Proveedor;
 use Illuminate\Http\Request;
 
 class ProductoController extends Controller
@@ -15,7 +16,8 @@ class ProductoController extends Controller
 
     public function create()
     {
-        return view('productos/create');
+        $proveedores = Proveedor::orderBy('nombre')->get();
+        return view('productos/create', compact('proveedores'));
     }
 
     public function store(Request $request)
@@ -49,7 +51,8 @@ class ProductoController extends Controller
 
     public function edit(Producto $producto)
     {
-        return view('productos/edit', compact('producto'));
+        $proveedores = Proveedor::orderBy('nombre')->get();
+        return view('productos/edit', compact('producto' , 'proveedores'));
     }
 
     public function update(Request $request, Producto $producto)

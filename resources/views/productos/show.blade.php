@@ -3,12 +3,13 @@
     <x-slot:tituloHead>Productos</x-slot:tituloHead>
     <x-slot:tituloVisible>Listado de productos</x-slot:tituloVisible>
 
-    <p>{{$producto->nombre}}</p>
-    <p>{{$producto->marca}}</p>
-    <p>{{$producto->modelo}}</p>
-    <p>{{$producto->descripcion}}</p>
-    <p>{{$producto->precio}}</p>
-    <p>{{$producto->stock}}</p>
+    <p>Nombre: {{$producto->nombre}}</p>
+    <p>Marca: {{$producto->marca}}</p>
+    <p>Modelo: {{$producto->modelo}}</p>
+    <p>Descripcion: {{$producto->descripcion}}</p>
+    <p>Precio: {{$producto->precio}}</p>
+    <p>Stock: {{$producto->stock}}</p>
+    <p>Proveedor: {{$producto->proveedor->nombre}}</p>
 
 
     <a href='{{ route('productos.edit', $producto) }}'>Editar producto</a>

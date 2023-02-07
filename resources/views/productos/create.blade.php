@@ -7,7 +7,9 @@
         @method('post')
         @csrf
 
-        <x-productos_campos/>
+        <x-productos_campos :proveedores="$proveedores"/>
+
+        <br><br>
 
         <input class='button' type='submit' name='crear' value='Crear producto' />
     </form><br/>
