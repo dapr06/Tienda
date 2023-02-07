@@ -8,7 +8,7 @@
     <x-menu/>
 
 
-    <img src='logoTienda.png'>
+   
         <h1>{{ $titulo ?? 'Tienda' }}</h1>
         <hr/>
         {{ $slot }}
