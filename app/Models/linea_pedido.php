@@ -18,4 +18,5 @@ class linea_pedido extends Model
     {
         return $this->belongsTo(Pedido::class);
     }
+
 }
