@@ -29,15 +29,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('productos',\App\Http\Controllers\ProductoController::class);
+    Route::resource('proveedores',\App\Http\Controllers\ProveedorController::class);
+    Route::resource('lineaPedido', \App\Http\Controllers\LineaPedidoController::class);
+    Route::resource('pedidos',\App\Http\Controllers\PedidoController::class);
+    Route::get('/recover', [\App\Http\Controllers\LineaPedidoController::class, 'recover'])->name('lineaPedidos.recover');
 });
 
 require __DIR__.'/auth.php';
 
-Route::resource('productos',\App\Http\Controllers\ProductoController::class);
-Route::resource('proveedores',\App\Http\Controllers\ProveedorController::class);
-Route::resource('lineaPedido', \App\Http\Controllers\LineaPedidoController::class);
-Route::resource('pedidos',\App\Http\Controllers\PedidoController::class);
-Route::get('/recover', [\App\Http\Controllers\LineaPedidoController::class, 'recover'])->name('lineaPedidos.recover');
+Route::view('contacto','contacto.blade.php')->name('contacto');
 
 
 

@@ -1,7 +1,7 @@
 <x-base>
     <x-slot:tituloHead>Productos</x-slot:tituloHead>
     <x-slot:tituloVisible>Listado de productos</x-slot:tituloVisible>
-    <link rel='stylesheet' href='resources/css/estilos.css'>
+    <link rel='stylesheet' href='../../../public/css/estilos.css'>
 
 
     <h2>Listado de productos</h2>

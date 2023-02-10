@@ -1,4 +1,8 @@
-<div class="container">
+<x-base>
+    <x-slot:tituloHead>Carrito</x-slot:tituloHead>
+    <x-slot:tituloVisible>Linea de pedido</x-slot:tituloVisible>
+
+
     <h2>Carrito</h2>
     <table border="1">
         <tr>
@@ -18,12 +22,12 @@
             <td><a>{{ $linea->producto_id }}</a></td>
             <td><a>{{ $linea->cantidad }}</a></td>
             <td><a>{{ $linea->pedido_id }}</a></td>
-            <td><a href='{{ route('lineaPedido.edit', $linea->id) }}'><img src="edit.png" width="20" height="20"></a></td>
+            <td><a href='{{ route('lineaPedido.edit', $linea->id) }}'><img src="/img/edit.png" width="20" height="20"></a></td>
             <td>
                 <form action="{{ route('lineaPedido.destroy', $linea->id) }}" method="POST">
                     @csrf
                     @method('delete')
-                    <input type="image" src="delete.png" width="20" height="20">
+                    <input type="image" src="/img/delete.png" width="20" height="20">
 
                 </form>
             </td>
@@ -53,7 +57,7 @@
     <a href='{{route('productos.index')}}'><button>Productos</button></a>
 </div>
 
-
+</x-base>
 
 
 

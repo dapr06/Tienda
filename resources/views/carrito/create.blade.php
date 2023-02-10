@@ -1,7 +1,10 @@
-<div class="container">
+<x-base>
+    <x-slot:tituloHead>Carrito</x-slot:tituloHead>
+    <x-slot:tituloVisible>Linea de pedido</x-slot:tituloVisible>
+
     <form action="{{ route('lineaPedido.store') }}" method="post">
         @csrf
-        <label for="product_id">producto:</label>
+        <label for="product_id">Producto:</label>
         <select name="product_id">
             @foreach ($productos as $producto)
                 <option value="{{ $producto->id }}">{{ $producto->nombre }}</option>
@@ -14,3 +17,4 @@
     </form>
     <a href='{{ route('lineaPedido.index') }}'>Volver a linea de pedido</a>
 </div>
+</x-base>
