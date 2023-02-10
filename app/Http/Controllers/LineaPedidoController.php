@@ -25,8 +25,8 @@ class LineaPedidoController extends Controller
 
 
 
-
-        return view('carrito/index', compact('lineaPedido'));
+        $productos = Producto::orderBy('nombre')->get();
+        return view('carrito/index', compact('lineaPedido','productos'));
     }
 
     /**
@@ -50,6 +50,7 @@ class LineaPedidoController extends Controller
      */
     public function store(Request $request)
     {
+
         // agregar producto
         $product_id = $request->input('product_id');
         $cant = $request->input('cant');
@@ -63,7 +64,7 @@ class LineaPedidoController extends Controller
 
 
         // Agrega una nueva lineaPedido para el producto
-       // $lineaPedido = new lineaPedido();
+        // $lineaPedido = new lineaPedido();
         //$lineaPedido->producto_id = $product_id;
         //$lineaPedido->cantidad = $cant; // por defecto
         //$lineaPedido->pedido_id = $pedido->id;
@@ -71,19 +72,19 @@ class LineaPedidoController extends Controller
         // Redirige al usuario de vuelta a la página anterior
         //return back();
         $lineaPedido = lineaPedidos::where('pedido_id',$pedido->id)
-                ->where ('producto_id',$product_id)
-                ->first();
+            ->where ('producto_id',$product_id)
+            ->first();
 
         if ($lineaPedido) {
-    $lineaPedido->cantidad += $cant;
-    $lineaPedido->save();
-} else {
-    $lineaPedido = new lineaPedidos();
-    $lineaPedido->producto_id = $product_id;
-    $lineaPedido->cantidad = $cant;
-    $lineaPedido->pedido_id = $pedido->id;
-    $lineaPedido->save();
-}
+            $lineaPedido->cantidad += $cant;
+            $lineaPedido->save();
+        } else {
+            $lineaPedido = new lineaPedidos();
+            $lineaPedido->producto_id = $product_id;
+            $lineaPedido->cantidad = $cant;
+            $lineaPedido->pedido_id = $pedido->id;
+            $lineaPedido->save();
+        }
 
         return redirect()->route('lineaPedido.index', compact('lineaPedido'));
     }

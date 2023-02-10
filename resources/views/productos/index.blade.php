@@ -16,6 +16,7 @@
             <th>Stock</th>
             <th>Proveedor</th>
             <th>Eliminar</th>
+            <th>Añadir al carrito</th>
         </tr>
 
         @foreach ($productos as $producto)
@@ -34,7 +35,15 @@
                         @method('delete')
                         @csrf
 
-                        <button type='submit' >(X)</button>
+                        <button type='submit' ><img src="delete.png" width="35" height="35"></button>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ route('lineaPedido.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $producto->id }}">
+                        <input type="hidden" name="cant" value="1">
+                        <button type="submit"><img src="addCarrito.jpg" width="35" height="35"></button>
                     </form>
                 </td>
             </tr>
