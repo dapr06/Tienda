@@ -47,4 +47,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pedido::class);
     }
+
+    public function retornapedido(){
+
+        //Retorna el pedido de un usuario que esta activo
+
+         $pedido = Pedido::where('user_id', auth::id())
+            ->where('estado', 'activo');
+    }
 }

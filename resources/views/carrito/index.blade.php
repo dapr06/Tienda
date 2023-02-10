@@ -6,10 +6,10 @@
     <h2>Carrito</h2>
     <table border="1">
         <tr>
-            <th>Id</th>
+
             <th>Producto</th>
             <th>Cantidad</th>
-            <th>Pedido</th>
+
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>
@@ -18,10 +18,9 @@
     @foreach ($lineaPedido as $linea)
 
         <tr>
-            <td><a>{{ $linea->id }}</a></td>
-            <td><a>{{ $linea->producto_id }}</a></td>
+            <td><a>{{ $linea->producto_id}}</a></td>
             <td><a>{{ $linea->cantidad }}</a></td>
-            <td><a>{{ $linea->pedido_id }}</a></td>
+
             <td><a href='{{ route('lineaPedido.edit', $linea->id) }}'><img src="/img/edit.png" width="20" height="20"></a></td>
             <td>
                 <form action="{{ route('lineaPedido.destroy', $linea->id) }}" method="POST">
@@ -53,7 +52,7 @@
 </div>
 <br><br>
 <div>
-    <button><a href='{{ route('lineaPedido.create') }}'>Agregar producto</a></button>
+
     <a href='{{route('productos.index')}}'><button>Productos</button></a>
 </div>
 

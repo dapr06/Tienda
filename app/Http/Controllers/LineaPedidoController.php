@@ -153,7 +153,7 @@ class LineaPedidoController extends Controller
 
 
         return redirect()->route('lineaPedido.index')
-            ->with('eliminada','Linea pedido eliminada correctamente');
+            ->with('eliminada','Producto eliminada correctamente');
 
     }
     // La nueva acción en el controlador que recupere la línea de pedido
@@ -170,7 +170,7 @@ class LineaPedidoController extends Controller
 
         // Redirige al usuario a la página de índice de lineas_pedidos con un mensaje de éxito
         return redirect()->route('lineaPedido.index')
-            ->with('eliminada', 'Línea de pedido recuperada correctamente');
+            ->with('eliminada', 'Producto recuperada correctamente');
     }
 
 }

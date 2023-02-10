@@ -7,7 +7,7 @@
     <h2>Listado de productos</h2>
     <table border="1">
         <tr>
-            <th>Id</th>
+
             <th>Nombre</th>
             <th>Marca</th>
             <th>Modelo</th>
@@ -21,7 +21,7 @@
 
         @foreach ($productos as $producto)
             <tr>
-                <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->id }}</a></td>
+
                 <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->nombre }}</a></td>
                 <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->marca }}</a></td>
                 <td><a href='{{ route('productos.show', $producto) }}'>{{ $producto->modelo }}</a></td>
@@ -46,6 +46,8 @@
                         <button type="submit"><img src="addCarrito.jpg" width="35" height="35"></button>
                     </form>
                 </td>
+
+
             </tr>
 
         @endforeach
