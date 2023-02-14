@@ -17,7 +17,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('linea_pedidos', function (Blueprint $table) {
+        Schema::create('lineaPedidos', function (Blueprint $table) {
             $table->id()->autoIncrement();
             // linea_pedido y productos N a N ya que un producto puede estar
             // varios pedidos y un pedido podría tener varios productos
@@ -43,6 +43,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('linea_pedidos');
+        Schema::dropIfExists('lineaPedidos');
     }
 };
