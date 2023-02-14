@@ -16,5 +16,5 @@
         <button type="submit" class="btn btn-primary">Agregar al carrito</button>
     </form>
     <a href='{{ route('lineaPedido.index') }}'>Volver a linea de pedido</a>
-</div>
+
 </x-base>
