@@ -55,4 +55,15 @@ class User extends Authenticatable
          $pedido = Pedido::where('user_id', auth::id())
             ->where('estado', 'activo');
     }
+    public function role(){
+        return $this->belongsTo('App\Models\User');
+    }
+
+   public function esAdmin(){
+
+        if($this->role_id == 1){
+            return true;
+        }
+        return false;
+   }
 }

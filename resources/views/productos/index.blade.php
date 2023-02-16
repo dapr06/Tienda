@@ -5,6 +5,8 @@
 
 
     <h2>Listado de productos</h2>
+
+
     <table border="1">
         <tr>
 
