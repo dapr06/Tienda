@@ -54,6 +54,7 @@ class LineaPedidoController extends Controller
         // agregar producto
         $product_id = $request->input('product_id');
         $cant = $request->input('cant');
+        $stock= $request->input('stock');
         // Busca un pedido activo para el usuario actual o crea uno nuevo
         $pedido = Pedido::where('user_id', auth::id())
             ->where('estado', 'activo')
@@ -62,31 +63,33 @@ class LineaPedidoController extends Controller
                 'estado' => 'activo',
             ]);
 
-
-        // Agrega una nueva lineaPedido para el producto
-        // $lineaPedido = new lineaPedido();
-        //$lineaPedido->producto_id = $product_id;
-        //$lineaPedido->cantidad = $cant; // por defecto
-        //$lineaPedido->pedido_id = $pedido->id;
-        //$lineaPedido->save();
-        // Redirige al usuario de vuelta a la página anterior
-        //return back();
         $lineaPedido = lineaPedidos::where('pedido_id',$pedido->id)
             ->where ('producto_id',$product_id)
             ->first();
 
-        if ($lineaPedido) {
-            $lineaPedido->cantidad += $cant;
-            $lineaPedido->save();
-        } else {
-            $lineaPedido = new lineaPedidos();
-            $lineaPedido->producto_id = $product_id;
-            $lineaPedido->cantidad = $cant;
-            $lineaPedido->pedido_id = $pedido->id;
-            $lineaPedido->save();
-        }
+        $producto = Producto::find($product_id);
 
-        return redirect()->route('lineaPedido.index', compact('lineaPedido'));
+        if($producto && $producto->stock >= $cant){
+            $producto->stock -= $cant;
+            $producto->save();
+
+
+            if ($lineaPedido) {
+                $lineaPedido->cantidad += $cant;
+                $lineaPedido->save();
+            } else {
+                $lineaPedido = new lineaPedidos();
+                $lineaPedido->producto_id = $product_id;
+                $lineaPedido->cantidad = $cant;
+
+                $lineaPedido->pedido_id = $pedido->id;
+                $lineaPedido->save();
+            }
+
+            return redirect()->route('lineaPedido.index', compact('lineaPedido'));
+        }else {
+            return back()->with('error', 'No hay suficiente stock para este producto');
+        }
     }
 
     /**
@@ -125,8 +128,21 @@ class LineaPedidoController extends Controller
     {
         // editar la cantidad del producto en el carrito
         $lineaPedido = lineaPedidos::findOrFail($id);
+        $producto = Producto::findOrFail($lineaPedido->producto_id);
+
+        //Restar la cantidad antigua del stock
+
+        $producto->stock += $lineaPedido->cantidad;
+
+        //Actualizar la cntidad en la linea de pedido
+
         $lineaPedido->cantidad = $request->input('cantidad');
         $lineaPedido->save();
+
+        //Restar la nueva cantidad del stock
+
+        $producto->stock -=$lineaPedido->cantidad;
+        $producto->save();
 
         return redirect()->route('lineaPedido.index');
 
@@ -141,11 +157,9 @@ class LineaPedidoController extends Controller
      */
     public function destroy($id)
     {
-        // Este código elimina una linea_pedido y redirige al usuario a la
-        // página de índice de lineas_pedidos con un mensaje de éxito.
+        // Este código elimina una linea_pedido y redirige al usuario a la página de índice de lineas_pedidos con un mensaje de éxito.
         $lineaPedido = lineaPedidos::findOrFail($id);
-        // Almacena la información sobre la línea de pedido eliminada en una
-        // variable de sesión
+        // Almacena la información sobre la línea de pedido eliminada en una variable de sesión
         session(['deletedLineaPedido' => $lineaPedido]);
         // Delete the linea_pedido
         $lineaPedido->delete();

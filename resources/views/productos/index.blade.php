@@ -43,16 +43,31 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $producto->id }}">
                         <input type="hidden" name="cant" value="1">
-                        <button type="submit"><img src="addCarrito.jpg" width="35" height="35"></button>
+
+                        <button type="submit"
+
+                            @if ($producto->stock == 0)
+                                disabled
+                            @endif
+
+                        ><img src="addCarrito.jpg" width="35" height="35"></button>
+
                     </form>
                 </td>
 
 
             </tr>
 
+
         @endforeach
 
     </table><br><br>
+     @if (session('error'))
+            <div class="alert alert-success">
+                <!--es una expresión de Blade en Laravel que permite mostrar un
+                mensaje en la vista que proviene de la sesión.-->
+                {{ session('error') }}
+                @endif
 
     <button><a href='{{ route('productos.create') }}'>Crear</a></button><br><br>
 

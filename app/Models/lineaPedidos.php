@@ -11,7 +11,7 @@ class lineaPedidos extends Model
     // muchas lineas de pedido a muchos productos
     public function producto()
     {
-        return $this->belongsToMany(Producto::class);
+        return $this->belongsTo(Producto::class);
     }
     // muchas lineas_pedido a un pedido
     public function pedido()
