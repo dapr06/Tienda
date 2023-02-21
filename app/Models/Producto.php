@@ -15,6 +15,6 @@ class Producto extends Model
     // muchos productos a muchos linea_pedido
     public function lineaPedido()
     {
-        return $this->belongsToMany(lineaPedidos::class);
+        return $this->HashToMany(lineaPedidos::class);
     }
 }

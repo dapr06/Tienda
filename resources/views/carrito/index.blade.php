@@ -8,7 +8,9 @@
         <tr>
 
             <th>Producto</th>
+            <th>Precio unidad</th>
             <th>Cantidad</th>
+            <th>Precio Total</th>
 
             <th>Editar</th>
             <th>Eliminar</th>
@@ -18,8 +20,10 @@
     @foreach ($lineaPedido as $linea)
 
         <tr>
-            <td><a>{{ $linea->producto_id}}</a></td>
+            <td><a>{{ $linea->producto->nombre}}</a></td>
+            <td><a>{{$linea->producto->precio}}</a></td>
             <td><a>{{ $linea->cantidad }}</a></td>
+            <td><a>{{$linea->producto->precio * $linea->cantidad }}</a></td>
 
             <td><a href='{{ route('lineaPedido.edit', $linea->id) }}'><img src="/img/edit.png" width="20" height="20"></a></td>
             <td>

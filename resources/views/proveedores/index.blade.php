@@ -25,7 +25,7 @@
                         @method('delete')
                         @csrf
 
-                        <button type='submit'>(X)</button>
+                        <button type='submit'><img src='delete.png' width="35" height="35"></button>
                     </form>
                 </td>
             </tr>

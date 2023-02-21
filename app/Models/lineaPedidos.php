@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class lineaPedidos extends Model
 {
+    protected $table = 'lineaPedidos';
     use HasFactory;
     // muchas lineas de pedido a muchos productos
     public function producto()
     {
-        return $this->belongsToMany(Producto::class);
+        return $this->belongsTo(Producto::class);
     }
     // muchas lineas_pedido a un pedido
     public function pedido()
