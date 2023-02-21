@@ -7,9 +7,9 @@
 
             <a href='{{route('productos.index')}}'><button>Productos</button></a>
             <a href='{{route('productos.create')}}'><button>Crear productos</button></a>
+            <!--@ if (auth: ...)-->
             <a href='{{route('proveedores.index')}}'><button>Proveedores</button></a>
             <a href='{{route('proveedores.create')}}'><button>Crear proveedores</button></a>
-            <a href='{{route('contacto')}}'>Contacto</a>
 
 
         </div>

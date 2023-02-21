@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class lineaPedidos extends Model
 {
+    protected $table = 'lineaPedidos';
     use HasFactory;
     // muchas lineas de pedido a muchos productos
     public function producto()

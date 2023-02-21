@@ -54,7 +54,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::view('contacto','contacto.blade.php')->name('contacto');
-
 
 
