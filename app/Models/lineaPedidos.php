@@ -17,7 +17,7 @@ class lineaPedidos extends Model
     // muchas lineas_pedido a un pedido
     public function pedido()
     {
-        return $this->belongsTo(Pedido::class);
+        return $this->belongsTo(Pedido::class);//->withPivot('lo que seria intensidad');
     }
 
 }
