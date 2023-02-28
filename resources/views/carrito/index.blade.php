@@ -8,10 +8,9 @@
         <tr>
 
             <th>Producto</th>
-            <!--ver--><th>Precio unidad</th><!--ver-->
+            <!--ver--><th>Precio unidad</th>
             <th>Cantidad</th>
             <!--ver--><th>Precio Total</th>
-
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>

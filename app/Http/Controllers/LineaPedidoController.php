@@ -173,6 +173,7 @@ class LineaPedidoController extends Controller
         // Recupera la línea de pedido eliminada de la variable de sesión
         $lineaPedido = session('deletedLineaPedido');
 
+
         // Aquí debes guardar de nuevo la línea de pedido en la base de datos
 
         $lineaPedido->save();
