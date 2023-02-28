@@ -54,6 +54,8 @@ class LineaPedidoController extends Controller
         // agregar producto
         $product_id = $request->input('product_id');
         $cant = $request->input('cant');
+
+
         // Busca un pedido activo para el usuario actual o crea uno nuevo
         $pedido = Pedido::where('user_id', auth::id())
             ->where('estado', 'activo')
@@ -61,7 +63,6 @@ class LineaPedidoController extends Controller
                 'user_id' => auth::id(),
                 'estado' => 'activo',
             ]);
-
 
         // Agrega una nueva lineaPedido para el producto
         // $lineaPedido = new lineaPedido();
@@ -173,4 +174,48 @@ class LineaPedidoController extends Controller
             ->with('eliminada', 'Producto recuperada correctamente');
     }
 
+    public function pago(){
+
+        $lineaPedido = lineaPedidos::all();
+        $productos = Producto::orderBy('nombre')->get();
+        return view('carrito/pago', compact('lineaPedido','productos'));
+
+    }
+
+    public function destroyAll()
+    {
+        // Obtener todos los registros de la tabla linea_pedidos
+        $lineaPedidos = lineaPedidos::all();
+
+        // Eliminar cada registro
+        foreach ($lineaPedidos as $lineaPedido) {
+            $lineaPedido->delete();
+        }
+
+        // Redirigir al usuario a la página de índice de lineas_pedidos con un mensaje de éxito.
+        return redirect()->route('lineaPedido.index')
+            ->with('eliminada', 'Todos los productos han sido eliminados correctamente');
+    }
+
+    public function confirmado(){
+
+        $lineaPedido = lineaPedidos::all();
+
+        $pedido = Pedido::where('user_id', auth::id())
+            ->where('estado', 'activo')
+            ->update(['estado' => 'confirmado']);
+
+        //Elimina la linea de pedido de los productos que se han condirmado
+        $this->destroyAll();
+
+        return view('carrito/confirmado', compact('lineaPedido', 'pedido'));
+    }
+
+
+
+
+
+
+
 }
+

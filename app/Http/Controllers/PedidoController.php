@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\lineaPedidos;
 use App\Models\Pedido;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -15,7 +16,8 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $pedidos = Pedido::orderBy('id')->get();
+        return view('pedidos/index', compact('pedidos'));
     }
     /**
      * Show the form for creating a new resource.
@@ -46,7 +48,7 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {
-        //
+        return view('pedidos/show', compact('pedido'));
     }
 
     /**

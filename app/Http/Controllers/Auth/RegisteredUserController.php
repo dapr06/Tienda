@@ -34,12 +34,17 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'direccion' => ['required', 'string', 'max:255'],
         ]);
+
+
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'direccion' => $request->direccion,
+
         ]);
 
         event(new Registered($user));
@@ -48,4 +53,34 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    //Editar direccion
+    public function editDireccion(){
+        $user = Auth::user();
+        return view('auth/edit-direccion', compact('user'));
+
+    }
+
+    // Para editar y actualizar direccion
+    public function updateDireccion(Request $request)
+    {
+        // Validar la petición
+        $request->validate([
+            'direccion' => ['required','string','max:255'],
+        ]);
+
+        // Obtener el usuario actual
+        $user = Auth::user();
+
+        // Actualizar la dirección del usuario
+        $user->direccion = $request->direccion;
+        $user->save();
+
+        // Redirigir al usuario a la pagina de pago
+        return redirect()->route('lineaPedidos.pago');
+    }
+
+
+
+
 }
