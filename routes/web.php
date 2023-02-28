@@ -50,6 +50,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('pedidos',\App\Http\Controllers\PedidoController::class);
 
     Route::get('/recover', [\App\Http\Controllers\LineaPedidoController::class, 'recover'])->name('lineaPedidos.recover');
+
+    // Pago y confirmar pedido
+    Route::get('/pago', [\App\Http\Controllers\LineaPedidoController::class, 'pago'])->name('lineaPedidos.pago');
+    Route::resource('registeredUser', \App\Http\Controllers\Auth\RegisteredUserController::class);
+    Route::get('/editDireccion', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'editDireccion'])->name('registeredUser.edit-direccion');
+    Route::put('/updateDireccion', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'updateDireccion'])->name('useres.update');
+    Route::get('/confirmado', [\App\Http\Controllers\LineaPedidoController::class, 'confirmado'])->name('lineaPedido.confirmado');
+
 });
 
 require __DIR__.'/auth.php';

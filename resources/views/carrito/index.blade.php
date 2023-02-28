@@ -8,35 +8,43 @@
         <tr>
 
             <th>Producto</th>
-            <th>Precio unidad</th>
+            <!--ver--><th>Precio unidad</th><!--ver-->
             <th>Cantidad</th>
-            <th>Precio Total</th>
+            <!--ver--><th>Precio Total</th>
 
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>
 
+        <!--ver--><input type="hidden" name="total_cantidad" value="{{ $total_cantidad = 0 }}">
 
     @foreach ($lineaPedido as $linea)
 
         <tr>
-            <td><a>{{ $linea->producto->nombre}}</a></td>
-            <td><a>{{$linea->producto->precio}}</a></td>
+            <!--ver--><td><a>{{ $linea->producto->nombre}}</a></td>
+            <!--ver--><td><a>{{$linea->producto->precio}}</a></td>
             <td><a>{{ $linea->cantidad }}</a></td>
-            <td><a>{{$linea->producto->precio * $linea->cantidad }}</a></td>
+            <!--ver--><td><a>{{$linea->producto->precio * $linea->cantidad }}</a></td>
 
-            <td><a href='{{ route('lineaPedido.edit', $linea->id) }}'><img src="/img/edit.png" width="20" height="20"></a></td>
-            <td>
-                <form action="{{ route('lineaPedido.destroy', $linea->id) }}" method="POST">
-                    @csrf
-                    @method('delete')
-                    <input type="image" src="/img/delete.png" width="20" height="20">
+
+            <!--ver--><input type="hidden" name="total_cantidad" value="{{ $total_cantidad += $linea->cantidad }}">
+
+
+                <td><a href='{{ route('lineaPedido.edit', $linea->id) }}'><img src="/img/edit.png" width="20" height="20"></a></td>
+                <td>
+                    <form action="{{ route('lineaPedido.destroy', $linea->id) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <input type="image" src="/img/delete.png" width="20" height="20">
 
                 </form>
             </td>
         </tr>
 
-    @endforeach
+        @endforeach
+
+        <!--ver--><label>Total productos: {{$total_cantidad}}</label>
+
         <!--mensaje de eliminada correctamente-->
         @if (session('eliminada'))
             <div class="alert alert-success">
@@ -57,8 +65,10 @@
 <br><br>
 <div>
 
-    <a href='{{route('productos.index')}}'><button>Productos</button></a>
-</div>
+        <a href='{{route('productos.index')}}'><button>Volver a productos</button></a>
+        <!--ver--><a href='{{route('lineaPedidos.pago')}}'><button>Tramitar pedido</button></a>
+
+    </div>
 
 </x-base>
 
